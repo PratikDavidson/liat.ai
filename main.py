@@ -16,7 +16,9 @@ while cap.isOpened():
 
     if success:
         # Run YOLO11 tracking on the frame, persisting tracks between frames
-        results = model.track(frame, persist=True)
+        # Class 2 represents players
+        # tracker used is ByteTrack(Faster compared to default BoT-SORT)
+        results = model.track(frame, persist=True, classes=2, tracker="bytetrack.yaml")
 
         # Visualize the results on the frame
         annotated_frame = results[0].plot()
