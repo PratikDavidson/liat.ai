@@ -3,7 +3,7 @@ import cv2
 from ultralytics import YOLO
 
 # Load the Ultalytics YOLO11 model
-model = YOLO("models/best.pt")
+model = YOLO("models/best.pt").to('cuda')
 
 # Open the video file
 video_path = "data/15sec_input_720p.mp4"
@@ -15,10 +15,16 @@ while cap.isOpened():
     success, frame = cap.read()
 
     if success:
-        # Run YOLO11 tracking on the frame, persisting tracks between frames
-        # Class 2 represents players
-        # tracker used is ByteTrack(Faster compared to default BoT-SORT)
-        results = model.track(frame, persist=True, classes=2, tracker="bytetrack.yaml")
+        results = model.track(
+            source=frame,
+            conf=0.8, # Set confidence threshold
+            iou=0.7, # Set IoU threshold for Non-Maximum Suppression
+            persist=True, # Run YOLO11 tracking on the frame, persisting tracks between frames
+            classes=[1, 2], # Class list {0: 'ball', 1: 'goalkeeper', 2: 'player', 3: 'referee'}
+            #half=True, # Enable half-precision (FP16) inference to speed up model inference on supported GPUs with minimal impact on accuracy
+            device=0, # Enable GPU usage
+            #tracker="bytetrack.yaml", # ByteTrack tracker is faster in comparison to deafult BoT-SORT tracker but less accurate
+        )
 
         # Visualize the results on the frame
         annotated_frame = results[0].plot()
@@ -36,5 +42,3 @@ while cap.isOpened():
 # Release the video capture object and close the display window
 cap.release()
 cv2.destroyAllWindows()
-
-#model.predict("in/test.png", save=True, conf=0.5)
