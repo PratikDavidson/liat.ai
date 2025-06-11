@@ -32,7 +32,11 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 pip install ultralytics
 ```
 >**Note:** Replace [CUDA_VERSION] with the version of CUDA installed on your system. You can find this version by running the nvidia-smi command in your terminal, which displays the driver and CUDA version currently in use by your GPU.
-4. Run
+4. Run main.py
 ```
 python main.py
+```
+5. Run app.py
+```
+streamlit run app.py
 ```
