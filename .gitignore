@@ -1,8 +1,2 @@
-# data folder contains 15sec_input_720p.mp4 
-data/
-
-# models folder contains best.pt file
+# models folder contains best.pt file (Size 185mb - Not suitable for upload)
 models/
-
-# runs folder contains model test results
-runs/
