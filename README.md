@@ -30,13 +30,38 @@ conda activate pytorch
 ```
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu[CUDA_VERSION] 
 pip install ultralytics
+pip install streamlit
+pip install ipykernel
 ```
 >**Note:** Replace [CUDA_VERSION] with the version of CUDA installed on your system. You can find this version by running the nvidia-smi command in your terminal, which displays the driver and CUDA version currently in use by your GPU.
-4. Run main.py
+Example: If CUDA Version is 12.8, then replace [CUDA_VERSION] with 128 - pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+4. Directory Structure
+```
+liat.ai
+|   .gitignore
+|   app.py
+|   main.py
+|   README.md
+|   requirements.txt
+|   Soccer Player Re-Identification Report.pdf
+|   test.ipynb
+|
++---data
+|       15sec_input_720p.mp4
+|
++---models
+|       best.pt
+|
+\---runs
+    \---detect
+        \---track
+                15sec_input_720p.avi
+```
+5. Use the following command to run main.py
 ```
 python main.py
 ```
-5. Run app.py
+6. Use the following command to run streamlit app
 ```
 streamlit run app.py
 ```
