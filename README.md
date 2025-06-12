@@ -37,7 +37,6 @@ pip install ipykernel
 Example: If CUDA Version is 12.8, then replace [CUDA_VERSION] with 128 - pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
 4. Directory Structure
 ```
-liat.ai
 |   .gitignore
 |   app.py
 |   main.py
@@ -45,6 +44,39 @@ liat.ai
 |   requirements.txt
 |   Soccer Player Re-Identification Report.pdf
 |   test.ipynb
+|
++---assets
+|       demo.gif
+|
++---data
+|       15sec_input_720p.mp4
+|
++---models
+|       best.pt
+|
+\---runs
+    \---detect
+        +---track
+        |       15sec_input_720p.avi
+        |
+        \---track2
+                15sec_input_720p.avi
+
+
+(pytorch) C:\Users\mckni\temp_repo\liat.ai>tree /f /a
+Folder PATH listing for volume Acer
+Volume serial number is 80F9-DD08
+C:.
+|   .gitignore
+|   app.py
+|   main.py
+|   README.md
+|   requirements.txt
+|   Soccer Player Re-Identification Report.pdf
+|   test.ipynb
+|
++---assets
+|       demo.gif
 |
 +---data
 |       15sec_input_720p.mp4
@@ -65,3 +97,7 @@ python main.py
 ```
 streamlit run app.py
 ```
+
+### Demo
+
+![Demo](./assets/Demo.gif)
